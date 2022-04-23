@@ -1,5 +1,6 @@
 {
   "version": "0.1.0",
+  "private": true,
   "name": "4chan-plus-server",
   "packageManager": "yarn@3.2.0"
 }
