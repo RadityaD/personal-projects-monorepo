@@ -3,5 +3,11 @@
   "private": true,
   "devDependencies": {
     "lerna": "^4.0.0"
+  },
+  "scripts": {
+    "start:4chan:fe": "lerna run --scope 4chan-plus-frontend start --stream",
+    "build:4chan:fe": "lerna run --scope 4chan-plus-frontend build --stream",
+    "start:4chan:server": "lerna run --scope 4chan-plus-server start --stream",
+    "initdb:4chan:server": "lerna run --scope 4chan-plus-server initdb --stream"
   }
 }

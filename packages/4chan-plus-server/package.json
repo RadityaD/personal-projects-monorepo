@@ -2,5 +2,16 @@
   "version": "0.0.1",
   "private": true,
   "name": "4chan-plus-server",
-  "packageManager": "yarn@3.2.0"
+  "packageManager": "yarn@3.2.0",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "pg": "^8.7.3"
+  },
+  "scripts": {
+    "initdb": "node ./db/init.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.25"
+  }
 }
