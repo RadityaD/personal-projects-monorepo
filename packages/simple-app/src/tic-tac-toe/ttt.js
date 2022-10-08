@@ -66,11 +66,15 @@ const Tictactoe = () => {
             const cells = val;
             const normalizedCells = cells.map((val) => (val - 1 ));
             const [cell1, cell2, cell3] = normalizedCells;
-
+            
+            // check if cell value inside winning condition constant, each is the same 
+            const winningCondition = fill[cell1] && fill[cell1] === fill[cell2] && fill[cell1] === fill[cell3];
             const isfilled = fill.every((val) => (Boolean(val)));
 
+            console.log({ isfilled });
 
-            if (fill[cell1] && fill[cell1] === fill[cell2] && fill[cell1] === fill[cell3]) {
+
+            if (winningCondition || (isfilled && winningCondition)) {
                 setWon(true);
                 if (turn.id === 2) {
                     setWinner(PLAYERS[0]);
@@ -93,16 +97,12 @@ const Tictactoe = () => {
                         return toSend;
                     });
                 }
-                return;
-            }
-
-            if (isfilled) {
-                console.log({ fill });
+            } else if (isfilled && !winningCondition) {
                 setDraw(true)
                 setScore({
                     ...score,
                     t: score.t + 1,
-                })
+                });
                 return;
             }
             
@@ -144,6 +144,7 @@ const Tictactoe = () => {
         setWinner(null);
     }
 
+    // check winnner
     useEffect(() => {
         if (!won && !draw) {
             checkWinner();
@@ -158,6 +159,7 @@ const Tictactoe = () => {
         }
     }, [])
 
+    // Reset board after 2 seconds of winning or draw
     useEffect(() => {
         if (won || draw) {
             setReset(true);
